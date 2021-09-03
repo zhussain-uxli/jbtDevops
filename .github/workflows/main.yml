@@ -1,0 +1,17 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  build:
+
+    runs-on: windows-2019
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run script
+      run: .\Script.ps1
+      shell: powershell
