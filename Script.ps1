@@ -5,8 +5,8 @@ $pswd = $azPwd | ConvertTo-SecureString -AsPlainText -Force
 
 $checkmodule = Get-Module -ListAvailable | Where-Object { $_.Name -eq "Az" }
     if (!$checkmodule) {    
-        Write-Host "Installing dbatools module" -ForegroundColor Cyan
-        Start-Process powershell.exe -ArgumentList "-Command Install-Module Az" -Wait
+        Write-Host "Installing Az module" -ForegroundColor Cyan
+        Start-Process powershell.exe -ArgumentList "-Command Install-Module Az" -Verb RunAs -Wait
     } 
 
 #$azCreds = Get-Credential
@@ -34,7 +34,7 @@ Start-Transcript -Path $logfile
 $checkmodule = Get-Module -ListAvailable | Where-Object { $_.Name -eq "dbatools" }
     if (!$checkmodule) {    
         Write-Host "Installing dbatools module" -ForegroundColor Cyan
-        Start-Process powershell.exe -ArgumentList "-Command Install-Module dbatools" -Wait
+        Start-Process powershell.exe -ArgumentList "-Command Install-Module dbatools" -Verb RunAs -Wait
     }    
 
 foreach ($file in Get-ChildItem $ScriptPath -Filter "*.sql" -Recurse | Sort-Object -Property FullName) {
