@@ -4,7 +4,7 @@ $azPwd = "q_S2_H1E3_lZ-vNN1zqfVSgT9AjAJ_6Q84"
 $tenant = '5a934bcd-767d-410c-8570-d0977d20aaf4'
 $pswd = $azPwd | ConvertTo-SecureString -AsPlainText -Force 
 
-
+Write-Host "Host param is $host_name" -ForegroundColor Cyan
 #$azCreds = Get-Credential
 $azCreds = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $appId, $pswd
 Connect-AzAccount -Credential $azCreds -TenantId $tenant -ServicePrincipal
