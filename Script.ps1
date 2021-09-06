@@ -1,3 +1,4 @@
+param($host_name)
 $appId = "10ea3bbe-7c7f-4a06-8b9a-c558e5a996a1"
 $azPwd = "q_S2_H1E3_lZ-vNN1zqfVSgT9AjAJ_6Q84"
 $tenant = '5a934bcd-767d-410c-8570-d0977d20aaf4'
@@ -12,8 +13,8 @@ Write-Host "Secret is $passwrd" -ForegroundColor Cyan
 $secureStringPwd = ConvertTo-SecureString $passwrd -AsPlainText -Force 
 #$loginName = "synapse_admin"
 $loginName = Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "Username" -AsPlainText
-#$SqlHostName = "synw-jbt-dw-dev1.sql.azuresynapse.net" 
-$SqlHostName = Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "Hostname" -AsPlainText
+$SqlHostName = $host_name 
+#$SqlHostName = Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "Hostname" -AsPlainText
 #$databaseName = "synsqljbtdw" 
 $databaseName =  Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "DBName" -AsPlainText
 #$login = Get-Credential -Message "Enter your SQL on-demand password" -UserName $loginName 
