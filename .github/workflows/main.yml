@@ -12,11 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: Azure/login@v1
-      - name: Azure logging-in
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }} # Define secret variable in repository settings as per action documentation
       - uses: Azure/get-keyvault-secrets@v1
-      - name: Getting azure secrets
         with:
           keyvault: "JbtDevopsKey"
           secrets: 'Hostname'
