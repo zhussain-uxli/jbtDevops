@@ -7,7 +7,7 @@ on:
 
 jobs:
   install-dependencies:
-    name: Install dependencies
+    name: Install dependency
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
