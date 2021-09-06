@@ -10,6 +10,7 @@ jobs:
     name: Install dependencies
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
       - uses: Azure/login@v1
       - name: Azure logging-in
         with:
