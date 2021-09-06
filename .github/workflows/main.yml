@@ -16,12 +16,8 @@ jobs:
         run: |
           Set-PSRepository PSGallery -InstallationPolicy Trusted
           Install-Module Az, dbatools
-
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v1
-    - name: Run script
-      run: .\Script.ps1
-      shell: pwsh
+      - uses: actions/checkout@v1
+      - name: Run script
+        shell: pwsh
+        run: .\Script.ps1
+    
