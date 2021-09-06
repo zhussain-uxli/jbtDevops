@@ -3,11 +3,6 @@ $azPwd = "q_S2_H1E3_lZ-vNN1zqfVSgT9AjAJ_6Q84"
 $tenant = '5a934bcd-767d-410c-8570-d0977d20aaf4'
 $pswd = $azPwd | ConvertTo-SecureString -AsPlainText -Force 
 
-$checkmodule = Get-Module -ListAvailable | Where-Object { $_.Name -eq "Az" }
-    if (!$checkmodule) {    
-        Write-Host "Installing Az module" -ForegroundColor Cyan
-        Start-Process powershell.exe -ArgumentList "-Command Install-Module Az" -Verb RunAs -Wait
-    } 
 
 #$azCreds = Get-Credential
 $azCreds = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $appId, $pswd
@@ -30,12 +25,7 @@ $logfile = "$ScriptPath\executionlog_$processstarttime.log"
 
 
 Start-Transcript -Path $logfile
-
-$checkmodule = Get-Module -ListAvailable | Where-Object { $_.Name -eq "dbatools" }
-    if (!$checkmodule) {    
-        Write-Host "Installing dbatools module" -ForegroundColor Cyan
-        Start-Process powershell.exe -ArgumentList "-Command Install-Module dbatools" -Verb RunAs -Wait
-    }    
+  
 
 foreach ($file in Get-ChildItem $ScriptPath -Filter "*.sql" -Recurse | Sort-Object -Property FullName) {
     try {
