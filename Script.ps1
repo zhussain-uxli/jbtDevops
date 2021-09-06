@@ -32,7 +32,7 @@ foreach ($file in Get-ChildItem $ScriptPath -Filter "*.sql" -Recurse | Sort-Obje
     try {
             Write-Host "****** PROCESSING $file FILE ******" -ForegroundColor Yellow
             #Invoke-DbaQuery -sqlinstance "localhost" -Database $databaseName -SqlCredential $login -File $file.FullName -EnableException
-            Invoke-DbaQuery -SqlInstance $SqlHostName -Database $databaseName -SqlCredential $login -File $file.FullName -EnableException
+            Invoke-DbaQuery -SqlInstance $SqlHostName".sql.azuresynapse.net" -Database $databaseName -SqlCredential $login -File $file.FullName -EnableException
 
             Write-Host "******SUCCESSFULLY PROCESSED $file FILE ******" -ForegroundColor Green  
             Write-Host $("*" * 100) 
