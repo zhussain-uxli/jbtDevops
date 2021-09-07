@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: Azure/login@v1
         with:
-          creds: '{"clientId": "10ea3bbe-7c7f-4a06-8b9a-c558e5a996a1","clientSecret": "q_S2_H1E3_lZ-vNN1zqfVSgT9AjAJ_6Q84","tenantId": "5a934bcd-767d-410c-8570-d0977d20aaf4"}'
+          creds: '{"clientId": "10ea3bbe-7c7f-4a06-8b9a-c558e5a996a1","clientSecret": "q_S2_H1E3_lZ-vNN1zqfVSgT9AjAJ_6Q84","subscriptionId":"cb8c52f7-512d-46ce-8e08-a85f6cae2741","tenantId": "5a934bcd-767d-410c-8570-d0977d20aaf4"}'
       - uses: Azure/get-keyvault-secrets@v1
         with:
           keyvault: "JbtDevopsKey"
