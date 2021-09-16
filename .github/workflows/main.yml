@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: copy release management scripts
-        run: Copy './' '${github.workspace}/Scripts'
+        run: Copy './' '${github.workspace}'
         shell: pwsh
       - name: publish artifact
         uses: actions/upload-artifact@v2
