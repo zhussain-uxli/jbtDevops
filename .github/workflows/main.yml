@@ -35,7 +35,10 @@ jobs:
           Set-PSRepository PSGallery -InstallationPolicy Trusted
           Install-Module Az, dbatools
       - uses: actions/checkout@v1
-      - name: Run script
+      - name: Run script dev
         shell: pwsh
         run: '& $env:GITHUB_WORKSPACE/Script.ps1 -host_name ${{steps.myGetSecretAction.outputs.Hostname}}' 
+      - name: Run script qa
+        shell: pwsh
+        run: '& $env:GITHUB_WORKSPACE/Script.ps1 -host_name "test.abc" '   
     
