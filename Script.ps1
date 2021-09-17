@@ -3,7 +3,7 @@ $appId = "10ea3bbe-7c7f-4a06-8b9a-c558e5a996a1"
 $azPwd = "q_S2_H1E3_lZ-vNN1zqfVSgT9AjAJ_6Q84"
 $tenant = '5a934bcd-767d-410c-8570-d0977d20aaf4'
 $pswd = $azPwd | ConvertTo-SecureString -AsPlainText -Force 
-$ErrorActionPreference = 'Continue'
+$ErrorActionPreference = 'SilentlyContinue'
 
 Write-Host "Host param is $host_name" -ForegroundColor Cyan
 #$azCreds = Get-Credential
