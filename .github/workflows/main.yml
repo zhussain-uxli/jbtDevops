@@ -20,11 +20,16 @@ jobs:
       - name: copy release management scripts
         run: Copy './DeploymentScript' '${github.workspace}'
         shell: pwsh
-      - name: publish artifact
+      - name: publish artifact  deployment script
         uses: actions/upload-artifact@v2
         with:
          path: '${{ github.workspace }}/DeploymentScript'
-          
+         name: DeploymentScript
+      - name: publish artifact release files
+        uses: actions/upload-artifact@v2
+        with:
+         path: '${{ github.workspace }}/${{steps.release_path.outputs.new_value}}'   
+         name: ReleaseFiles 
       - uses: Azure/login@v1
         with:
           creds: '{"clientId": ${{ secrets.CLIENT_ID }},"clientSecret": ${{ secrets.CLIENT_SECRET }},"tenantId": ${{ secrets.TENANT_ID }}}'
