@@ -1,4 +1,4 @@
-param($host_name)
+param($host_name, $release_path)
 $appId = "10ea3bbe-7c7f-4a06-8b9a-c558e5a996a1"
 $azPwd = "q_S2_H1E3_lZ-vNN1zqfVSgT9AjAJ_6Q84"
 $tenant = '5a934bcd-767d-410c-8570-d0977d20aaf4'
@@ -21,7 +21,7 @@ $databaseName =  Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "DBName" -
 #$login = Get-Credential -Message "Enter your SQL on-demand password" -UserName $loginName 
 $login = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $loginName, $secureStringPwd
 #$ScriptPath = Get-Location
-$ScriptPath = "Release1.0"
+$ScriptPath = $release_path
 
 $logfile = "$ScriptPath\executionlog_$processstarttime.log"
 
