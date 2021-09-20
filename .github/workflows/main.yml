@@ -38,9 +38,9 @@ jobs:
       - name: Run script
         shell: pwsh
         run: |
-            '& $env:GITHUB_WORKSPACE/Script.ps1 -host_name ${{steps.myGetSecretAction.outputs.Hostname}}
-            -db_name ${{steps.myGetSecretAction.outputs.DBName}}
-            -user_name ${{steps.myGetSecretAction.outputs.Username}}
-            -user_pwd ${{steps.myGetSecretAction.outputs.Password}}'
+            .\Script.ps1 -host_name ${{steps.myGetSecretAction.outputs.Hostname}}\
+            -db_name ${{steps.myGetSecretAction.outputs.DBName}}\
+            -user_name ${{steps.myGetSecretAction.outputs.Username}}\
+            -user_pwd ${{steps.myGetSecretAction.outputs.Password}}
               
     
