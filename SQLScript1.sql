@@ -1,17 +1,4 @@
 /********************************************************************************************************************
-Description: Creating Schemas to create Tables / Views / Stored Proceudres at different layers.
-Developer: Mohammed Majid
-Date: 28/04/2021
-Reviewed By: Ramakrishnan Velu
-*********************************************************************************************************************/
-
-CREATE SCHEMA intcf;
-CREATE SCHEMA acq101;
-CREATE SCHEMA dwhcda;
-CREATE SCHEMA replncss;
-GO
-
-/********************************************************************************************************************
 Table Name: [intcf].[DailySchedule]
 Description: This is a Framework table for Scheduling, 'IF_Schedule_Extraction' Dynamic pipeline get the entries
 From 'intcf.DailySchedule' table and Trigger.
