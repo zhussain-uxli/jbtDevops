@@ -4,8 +4,7 @@ on:
   push:
     branches:
      - main
-    paths: 
-     - '!workflows/**'
+  
 jobs:
   install-dependencies:
     name: Install dependency\ies and run
