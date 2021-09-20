@@ -10,8 +10,9 @@ Write-Host "Host param is $host_name" -ForegroundColor Cyan
 $azCreds = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $appId, $pswd
 Connect-AzAccount -Credential $azCreds -TenantId $tenant -ServicePrincipal
 #$passwrd  = Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "Password" -AsPlainText
-Write-Host "Secret is $user_pwd" -ForegroundColor Cyan
-$secureStringPwd = ConvertTo-SecureString $user_pwd -AsPlainText -Force 
+$passwrd = $user_pwd
+Write-Host "Secret is $passwrd" -ForegroundColor Cyan
+$secureStringPwd = ConvertTo-SecureString $passwrd -AsPlainText -Force 
 #$loginName = "synapse_admin"
 #$loginName = Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "Username" -AsPlainText
 $loginName = $user_name
