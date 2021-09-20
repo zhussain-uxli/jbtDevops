@@ -41,6 +41,6 @@ jobs:
             .\Script.ps1 -host_name ${{steps.myGetSecretAction.outputs.Hostname}}\
             -db_name ${{steps.myGetSecretAction.outputs.DBName}}\
             -user_name ${{steps.myGetSecretAction.outputs.Username}}\
-            -user_pwd '${{steps.myGetSecretAction.outputs.Password}}'
+            -user_pwd ${{steps.myGetSecretAction.outputs.Password}}
               
     
