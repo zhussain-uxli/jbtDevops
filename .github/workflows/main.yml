@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-     - main
+     - '!main'
   
 jobs:
   install-dependencies:
@@ -11,6 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+      - name: Read release path location
+        id: release_path
+        run: |
+            input_file="./DeploymentScript/Release.txt"
+            while read line 
+            do
+              file_text=$line
+            done < "$input_file"
+            echo ::set-output name=new_value::$file_text
       - name: copy release management scripts
         run: Copy './DeploymentScript' '${github.workspace}'
         shell: pwsh
