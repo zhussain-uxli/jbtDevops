@@ -24,7 +24,7 @@ $login = New-Object -TypeName System.Management.Automation.PSCredential -Argumen
 $ScriptPath = $release_path
 Write-Host "Path is $release_path" -ForegroundColor Cyan
 
-$logfile = "$ScriptPath\executionlog_$processstarttime.log"
+$logfile = "$ScriptPath/executionlog.log"
 
 
 Start-Transcript -Path $logfile
