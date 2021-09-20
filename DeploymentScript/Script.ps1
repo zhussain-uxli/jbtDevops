@@ -22,7 +22,7 @@ $databaseName =  Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "DBName" -
 $login = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $loginName, $secureStringPwd
 #$ScriptPath = Get-Location
 $ScriptPath = $release_path
-Write-Host "Path is $ScriptPath" -ForegroundColor Cyan
+Write-Host "Path is $release_path" -ForegroundColor Cyan
 
 $logfile = "$ScriptPath\executionlog_$processstarttime.log"
 
