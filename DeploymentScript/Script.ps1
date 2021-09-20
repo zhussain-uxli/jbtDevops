@@ -20,8 +20,8 @@ $databaseName =  Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "DBName" -
 #$databaseName = $db_name
 #$login = Get-Credential -Message "Enter your SQL on-demand password" -UserName $loginName 
 $login = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $loginName, $secureStringPwd
-$ScriptPath = Get-Location
-#$ScriptPath = "Release2.0"
+#$ScriptPath = Get-Location
+$ScriptPath = "Release1.0"
 
 $logfile = "$ScriptPath\executionlog_$processstarttime.log"
 
