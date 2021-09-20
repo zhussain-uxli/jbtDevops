@@ -50,5 +50,9 @@ jobs:
         shell: pwsh
         run: |
             .\DeploymentScript\Script.ps1 -host_name ${{steps.myGetSecretAction.outputs.Hostname}} -release_path ${{steps.release_path.outputs.new_value}}
-              
+      - name: publish artifact log file
+        uses: actions/upload-artifact@v2
+        with:
+         path: '${{ github.workspace }}/${{steps.release_path.outputs.new_value}}/executionlog.log'   
+         name: ExecutionLogs         
     
