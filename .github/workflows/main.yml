@@ -6,7 +6,7 @@ on:
      - main
 jobs:
   install-dependencies:
-    name: Install dependency and run
+    name: Install dependency\ies and run
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
