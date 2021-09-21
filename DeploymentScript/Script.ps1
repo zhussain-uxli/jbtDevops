@@ -1,24 +1,21 @@
-param($host_name, $release_path, $clientId, $clientSecret, $tenantId)
+param($host_name, $release_path, $user_name, $user_pwd, $db_name)
 
 $appId = $clientId
 $azPwd = $clientSecret
 $tenant = $tenantId
 $pswd = $azPwd | ConvertTo-SecureString -AsPlainText -Force 
 #$ErrorActionPreference = 'SilentlyContinue'
-
-Write-Host "Host param is $host_name" -ForegroundColor Cyan
 #$azCreds = Get-Credential
 $azCreds = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $appId, $pswd
 Connect-AzAccount -Credential $azCreds -TenantId $tenant -ServicePrincipal
-$passwrd  = Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "Password" -AsPlainText
-Write-Host "Secret is $passwrd" -ForegroundColor Cyan
-$secureStringPwd = ConvertTo-SecureString $passwrd -AsPlainText -Force 
-$loginName = Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "Username" -AsPlainText
-#$loginName = $user_name
+#$passwrd  = Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "Password" -AsPlainText
+$secureStringPwd = ConvertTo-SecureString $user_pwd -AsPlainText -Force 
+#$loginName = Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "Username" -AsPlainText
+$loginName = $user_name
 $SqlHostName = $host_name 
 #$SqlHostName = Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "Hostname" -AsPlainText 
-$databaseName =  Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "DBName" -AsPlainText
-#$databaseName = $db_name
+#$databaseName =  Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "DBName" -AsPlainText
+$databaseName = $db_name
 $login = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $loginName, $secureStringPwd
 #$ScriptPath = Get-Location
 $ScriptPath = $release_path
