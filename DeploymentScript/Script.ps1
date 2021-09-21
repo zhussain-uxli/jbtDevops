@@ -1,7 +1,10 @@
-param($host_name, $release_path, $user_name, $user_pwd, $db_name)
-$appId = "10ea3bbe-7c7f-4a06-8b9a-c558e5a996a1"
-$azPwd = "q_S2_H1E3_lZ-vNN1zqfVSgT9AjAJ_6Q84"
-$tenant = '5a934bcd-767d-410c-8570-d0977d20aaf4'
+param($host_name, $release_path, $clientId, $clientSecret, $tenantId)
+#$appId = "10ea3bbe-7c7f-4a06-8b9a-c558e5a996a1"
+#$azPwd = "q_S2_H1E3_lZ-vNN1zqfVSgT9AjAJ_6Q84"
+#$tenant = '5a934bcd-767d-410c-8570-d0977d20aaf4'
+$appId = $clientId
+$azPwd = $clientSecret
+$tenant = $tenantId
 $pswd = $azPwd | ConvertTo-SecureString -AsPlainText -Force 
 #$ErrorActionPreference = 'SilentlyContinue'
 
@@ -9,16 +12,15 @@ Write-Host "Host param is $host_name" -ForegroundColor Cyan
 #$azCreds = Get-Credential
 $azCreds = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $appId, $pswd
 Connect-AzAccount -Credential $azCreds -TenantId $tenant -ServicePrincipal
-#$passwrd  = Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "Password" -AsPlainText
-Write-Host "Secret is $user_pwd" -ForegroundColor Cyan
-$secureStringPwd = ConvertTo-SecureString $user_pwd -AsPlainText -Force 
-#$loginName = Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "Username" -AsPlainText
-$loginName = $user_name
+$passwrd  = Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "Password" -AsPlainText
+Write-Host "Secret is $passwrd" -ForegroundColor Cyan
+$secureStringPwd = ConvertTo-SecureString $passwrd -AsPlainText -Force 
+$loginName = Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "Username" -AsPlainText
+#$loginName = $user_name
 $SqlHostName = $host_name 
 #$SqlHostName = Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "Hostname" -AsPlainText 
-#$databaseName =  Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "DBName" -AsPlainText
-$databaseName = $db_name
-#$login = Get-Credential -Message "Enter your SQL on-demand password" -UserName $loginName 
+$databaseName =  Get-AzKeyVaultSecret -VaultName "JbtDevopsKey" -Name "DBName" -AsPlainText
+#$databaseName = $db_name
 $login = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $loginName, $secureStringPwd
 #$ScriptPath = Get-Location
 $ScriptPath = $release_path
