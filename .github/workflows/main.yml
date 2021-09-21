@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-     - 'main'
+     - '!main'
   
 jobs:
   install-dependencies:
@@ -49,7 +49,7 @@ jobs:
       - name: Run script
         shell: pwsh
         run: |
-            .\DeploymentScript\Script.ps1 -host_name ${{steps.myGetSecretAction.outputs.Hostname}} -release_path ${{steps.release_path.outputs.new_value}} -user_name ${{steps.myGetSecretAction.outputs.Username}} -user_pwd ${{steps.myGetSecretAction.outputs.Password}} -db_name ${{steps.myGetSecretAction.outputs.DBName}}
+            .\DeploymentScript\Script.ps1 -host_name ${{steps.myGetSecretAction.outputs.Hostname}} -release_path ${{steps.release_path.outputs.new_value}} -clientId ${{secrets.CLIENT_ID}} -clientSecret ${{secrets.CLIENT_SECRET}} -tenantId ${{secrets.TENANT_ID}}
       - name: publish artifact log file
         uses: actions/upload-artifact@v2
         with:
